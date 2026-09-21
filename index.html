@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Caça Fantasmas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1> Caça Fantasmas</h1>
+      <div class="placar">
+        <span>Pontos: <b id="pontos">0</b></span>
+        <span>Tempo: <b id="tempo">30</b>s</span>
+      </div>
+    </header>
+
+    <div id="area-jogo"></div>
+
+    <div id="tela-inicio" class="tela">
+      <h2>Clique nos fantasmas!</h2>
+      <p>Você tem 30 segundos. Cada fantasma vale 10 pontos.</p>
+      <button id="btn-iniciar"> Começar</button>
+    </div>
+
+    <div id="tela-fim" class="tela escondida">
+      <h2> Tempo esgotado!</h2>
+      <p>Sua pontuação: <b id="pontos-finais">0</b></p>
+      <button id="btn-reiniciar"> Jogar de novo</button>
+    </div>
+  </div>
+  <script src="jogo.js"></script>
+</body>
+</html>
+

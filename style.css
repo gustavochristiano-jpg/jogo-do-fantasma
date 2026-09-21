@@ -1,0 +1,141 @@
+*{ box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+.container {
+  width: 90vw;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+h1 {
+  font-size: 1.5rem;
+  background: linear-gradient(90deg, #ff6ec7, #7873f5, #4ade80);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.placar {
+  display: flex;
+  gap: 20px;
+  font-size: 1.1rem;
+}
+
+.placar b { color: #4ade80; }
+
+#area-jogo {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 350px;
+  background: radial-gradient(circle at center, #1e293b, #0f172a);
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: crosshair;
+}
+
+/* Fantasma */
+.fantasma{
+  position: absolute;
+  font-size: 50px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s;
+  animation: aparecer 0.3s ease-out;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.fantasma:hover { transform: scale(1.2); }
+.fantasma:active { transform: scale(0.8); }
+
+@keyframes aparecer {
+  from { transform: scale(0) rotate(-180deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);    opacity: 1; }
+}
+
+.fantasma.morrendo {
+  animation: sumir 0.3s ease-in forwards;
+  pointer-events: none;
+}
+
+@keyframes sumir {
+  to { transform: scale(2); opacity: 0; }
+}
+
+/* Pontuação flutuante */
+.pontos-flutuante {
+  position: absolute;
+  color: #4ade80;
+  font-weight: bold;
+  font-size: 1.3rem;
+  pointer-events: none;
+  animation: subir 0.8s ease-out forwards;
+  text-shadow: 0 0 10px #4ade80;
+}
+
+@keyframes subir {
+  from { transform: translateY(0);    opacity: 1; }
+  to   { transform: translateY(-60px); opacity: 0; }
+}
+
+/* Telas sobrepostas */
+.tela {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-radius: 15px;
+  z-index: 10;
+  text-align: center;
+  padding: 20px;
+}
+
+.tela.escondida { display: none; }
+
+.tela h2 { font-size: 2rem; }
+
+button {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff6ec7, #7873f5);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 20px rgba(120, 115, 245, 0.4);
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(120, 115, 245, 0.6);
+}
+
