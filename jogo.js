@@ -42,6 +42,7 @@ function finalizarJogo() {
   jogando = false;
   const som_de_tempo = new Audio("sons/fim.mp3")
   som_de_tempo.preload = 'auto'
+  som_de_tempo.currenttime = 0;
   som_de_tempo.play();
   clearInterval(intervaloTempo);
   clearInterval(intervaloCriar);
@@ -75,10 +76,10 @@ function criarFantasma() {
   fantasma.addEventListener('click', (e) => {
     e.stopPropagation();
     if (!jogando || fantasma.classList.contains('morrendo')) return;
+    som_de_acerto.currenttime = 0;
      som_de_acerto.play();
     pontos += 10;
     elPontos.textContent = pontos;
-
     // Efeito de pontuação flutuante
     mostrarPontosFlutuantes(fantasma, '+10');
 
